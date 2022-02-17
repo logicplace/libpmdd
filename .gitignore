@@ -1,0 +1,30 @@
+# Prerequisites
+*.d
+
+# Intermediate compilations
+*.sre
+
+# Object files
+*.obj
+
+# Linker output
+*.map
+*.abs
+*.sre
+*.lnl
+
+# Libraries
+*.a
+
+# Executables
+*.out
+*.hex
+*.min
+
+# Debug files
+*.cal
+*.elk
+*.dSYM/
+*.su
+*.idb
+*.pdb
