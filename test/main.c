@@ -77,30 +77,23 @@ void run_lcd_tests() {
         LCD_PAGE(p);
         LCD_COL(0);
         for (c = 0; c < 96; ++c) {
-            for (y = 0; (x = LCD_DATA) < c; ++y);
-            if (y != 1) {
-                dout("Took ");
-                DEBUG_UINT8 = y;
-                dout(" reads at p=");
-                DEBUG_UINT8 = p;
-                dout(", c=");
-                DEBUG_UINT8 = c;
-                DEBUG_CHAR = '\n';
-            }
-            if (x != c) {
-                dout("Mismatch at p=");
-                DEBUG_UINT8 = p;
-                dout(", c=");
-                DEBUG_UINT8 = c;
-                dout(", found=");
-                DEBUG_UINT8 = x;
-                dout(", next=");
-                DEBUG_UINT8 = LCD_DATA;
-                DEBUG_CHAR = '\n';
-                for (; c < 96; ++c) LCD_DATA = 0xff;
-                die();
-            }
+            if (c) DEBUG_CHAR = ',';
+            DEBUG_UHEX8 = LCD_DATA;
+            // if (x != c) {
+            //     dout("Mismatch at p=");
+            //     DEBUG_UINT8 = p;
+            //     dout(", c=");
+            //     DEBUG_UINT8 = c;
+            //     dout(", found=");
+            //     DEBUG_UINT8 = x;
+            //     dout(", next=");
+            //     DEBUG_UINT8 = LCD_DATA;
+            //     DEBUG_CHAR = '\n';
+            //     for (; c < 96; ++c) LCD_DATA = 0xff;
+            //     die();
+            // }
         }
+        DEBUG_CHAR = '\n';
     }
 
     dout("Press A to continue\n");

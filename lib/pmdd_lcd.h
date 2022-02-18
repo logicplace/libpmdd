@@ -19,13 +19,9 @@
 
 
 //// Macros for low-level ops
-uint8_t _lcd_dummy_read;
 
 // Set column address. 0-131
-#define LCD_COL(x) \
-    LCD_CTRL = ((x) & 0x0f);\
-    LCD_CTRL = 0x10 | (((x) & 0xf0) >> 4); \
-    _lcd_dummy_read = LCD_DATA
+uint8_t LCD_COL(uint8_t);
 
 // Set page address (where each page is 8 rows (pixels) tall). 0-8
 #define LCD_PAGE(x) \

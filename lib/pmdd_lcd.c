@@ -10,6 +10,12 @@
 
 #include "pmdd_lcd.h"
 
+uint8_t LCD_COL(uint8_t x) {
+    LCD_CTRL = ((x) & 0x0f);
+    LCD_CTRL = 0x10 | (((x) & 0xf0) >> 4);
+    return LCD_DATA;
+}
+
 void lcd_write(uint8_t *data, uint8_t len) {
     // Overwrite mem in LCD RAM at cursor
     for (; len; --len, ++data) {
