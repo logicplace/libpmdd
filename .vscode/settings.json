@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "pm.h": "c",
-        "stdint.h": "c"
+        "stdint.h": "c",
+        "pmdd_lcd.h": "c"
     }
 }

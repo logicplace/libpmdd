@@ -1,7 +1,14 @@
+/* Pokemon mini Direct Drawing library, LCD functions
+ * Copyright 2022 Sapphire Becker (logicplace.com)
+ * MIT Licensed
+ * 
+ * This is the main library file for low level LCD functions.
+ */
+
 #include "pm.h"
 #include <stdint.h>
 
-#include "pmdd.h"
+#include "pmdd_lcd.h"
 
 void lcd_write(uint8_t *data, uint8_t len) {
     // Overwrite mem in LCD RAM at cursor
@@ -23,5 +30,17 @@ void lcd_blit(uint8_t *data, uint8_t *mask, uint8_t len) {
 void lcd_read(uint8_t len, uint8_t *out) {
     for (; len; --len, ++out) {
         *out = LCD_DATA;
+    }
+}
+
+void lcd_clear() {
+    uint8_t c, p;
+
+    for (p = 0; p <= 8; ++p) {
+        LCD_PAGE(p);
+        LCD_COL(0);
+        for (c = 0; c <= 131; ++c) {
+            LCD_DATA = 0;
+        }
     }
 }

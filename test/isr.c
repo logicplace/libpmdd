@@ -1,7 +1,7 @@
 #include "pm.h"
 
-const _rom char game_code[4] _at(0x21AC) = "HW";
-const _rom char game_title[12] _at(0x21B0) = "Hi World!";
+const _rom char game_code[4] _at(0x21AC) = "PDDT";
+const _rom char game_title[12] _at(0x21B0) = "PMDD Test";
 
 void _interrupt(0) prc_frame_copy_irq(void) {
     _slp();

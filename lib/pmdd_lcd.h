@@ -4,8 +4,8 @@
  * 
  * Note that all mentions of RAM below refer to the on-LCD chip RAM.
  */
-#ifndef __PMDD_H__
-#define __PMDD_H__
+#ifndef __PMDD_LCD_H__
+#define __PMDD_LCD_H__
 
 #include "pm.h"
 #include <stdint.h>
@@ -19,11 +19,13 @@
 
 
 //// Macros for low-level ops
+uint8_t _lcd_dummy_read;
 
 // Set column address. 0-131
 #define LCD_COL(x) \
     LCD_CTRL = ((x) & 0x0f);\
-    LCD_CTRL = 0x10 | (((x) & 0xf0) >> 4)
+    LCD_CTRL = 0x10 | (((x) & 0xf0) >> 4); \
+    _lcd_dummy_read = LCD_DATA
 
 // Set page address (where each page is 8 rows (pixels) tall). 0-8
 #define LCD_PAGE(x) \
@@ -165,4 +167,6 @@ void lcd_write(uint8_t *data, uint8_t len);
 void lcd_blit(uint8_t *data, uint8_t *mask, uint8_t len);
 void lcd_read(uint8_t len, uint8_t *out);
 
-#endif
+void lcd_clear();
+
+#endif // __PMDD_LCD_H__
