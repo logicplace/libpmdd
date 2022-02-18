@@ -162,6 +162,7 @@ uint8_t LCD_COL(uint8_t);
 void lcd_write(uint8_t *data, uint8_t len);
 void lcd_blit(uint8_t *data, uint8_t *mask, uint8_t len);
 void lcd_read(uint8_t len, uint8_t *out);
+uint8_t lcd_read1();
 
 void lcd_clear();
 

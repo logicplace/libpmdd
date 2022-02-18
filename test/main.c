@@ -78,7 +78,7 @@ void run_lcd_tests() {
         LCD_COL(0);
         for (c = 0; c < 96; ++c) {
             if (c) DEBUG_CHAR = ',';
-            DEBUG_UHEX8 = LCD_DATA;
+            DEBUG_UHEX8 = lcd_read1();
             // if (x != c) {
             //     dout("Mismatch at p=");
             //     DEBUG_UINT8 = p;
